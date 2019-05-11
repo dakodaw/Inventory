@@ -130,6 +130,7 @@
     <Content Include="Content\chosen.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="HTMLPage1.html" />
     <Content Include="WGUCapstone\Header.js" />
     <Content Include="WGUCapstone\Inventory.js" />
     <Content Include="WGUCapstone\InventoryMain.html" />
