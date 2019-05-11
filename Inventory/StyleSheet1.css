@@ -1,0 +1,125 @@
+﻿body
+{
+    background-color:cornflowerblue
+}
+h1, .signature
+{
+    text-align:center;
+}
+.maindropdown
+{
+	border-radius: 5px;
+	background-color: black;
+	color: white;
+	width:150px;
+	height:30px;
+}
+.maindrops
+{
+	background-color:white;
+	color:black;
+}
+.agreement
+{
+	text-align: left;
+}
+.checkoutForm
+{
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:white;
+	text-align:center;
+}
+
+.formText
+{
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.formTitle
+{
+	font-weight: bold;
+}
+
+.formSection
+{
+	text-align: left;
+	font-weight: bold;
+}
+	
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #333;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    position: center;
+    transform: translateY(-50%);
+}
+
+#hide-me {
+    display:none;
+    visibility:hidden;
+}

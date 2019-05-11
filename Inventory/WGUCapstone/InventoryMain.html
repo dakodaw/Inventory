@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/jquery-ui.css" />
+    <link rel="stylesheet" href="../Content/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../Content/chosen.min.css" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="../Scripts/chosen.jquery.min.js"></script>
+    <script src="../Scripts/jquery.validate.js"></script>
+    <script src="../Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <title>Technology Inventory</title>
+</head>
+<body>
+    <div class="NavigationBar">
+        <div class="LogoBar">
+            <div class="LogoBarContent">
+                <img src="..\Images/MyFakeCompanyLogo.png" width="200px" />
+                <div class="HeaderTitle">Technology Inventory</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="smallHeadBar">
+        <div id="SortAssetStatus" class="smallHeadBarOptions">
+            <select id='SortAssetStatusDrop' class='maindropdown SortAssetStatusDrop'>
+                <option class="SortAssetStatusDrop" value="AllActiveAssets">All Active Assets</option>
+                <option class="SortAssetStatusDrop" value="CheckedIn">Checked In</option>
+                <option class="SortAssetStatusDrop" value="CheckedOut">Checked Out</option>
+                <option class="SortAssetStatusDrop" value="Disposed">Disposed</option>
+                <option class="SortAssetStatusDrop" value="AllAssets">All Assets</option>
+            </select>
+        </div>
+        <label class="filterDescription">Filters</label>
+        <div id="assetBrands" class="smallHeadBarOptions">
+            <div><select id='BrandDropDown' class='maindropdown brandsDropDown'></select></div>
+        </div>
+        <div id="assetTypes" class="smallHeadBarOptions">
+            <div><select id='TypeDropDown' class='maindropdown typesDropDown'></select></div>
+        </div>
+        <div id="assetModels" class="smallHeadBarOptions">
+            <div><select id='ModelDropDown' class='maindropdown assetModelsDropDown'></select></div>
+        </div>
+        <div id="ownerDepartment" class="smallHeadBarOptions">
+            <div><select id='DepartmentDropDown' class='maindropdown ownerDepartmentDropDown'></select></div>
+        </div>
+        <div id="ownerName" class="smallHeadBarOptions">
+            <div>
+                <select id='OwnersDropDown' class='maindropdown ownerNamesDropDown'></select>
+            </div>
+        </div>
+
+        <div id="location" class="smallHeadBarOptions">
+            <div><select id='LocationDropDown' class='maindropdown locationsDropdown'></select></div>
+        </div>
+        <div id="search" class="smallHeadBarOptions">
+            <div><input type="text" id='SearchInput' placeholder="Search" class="searchBar" autofocus /></div>
+        </div>
+
+        <br />
+    </div>
+    <div class="smallSubHeadBar">
+        <button id="AddAssetButton" class="smallHeadBarOptions AddButton">Add Asset</button>
+        <select id="AddNewOptions" class="smallHeadBarOptions AddOwnerSelect">
+            <option>Add New</option>
+            <option id="AddOwnerButton" value="AddOwner">Add New Owner</option>
+            <option value="AddAssetModel">Add New Asset Model</option>
+        </select>
+        <button id="DownloadButton" class="smallHeadBarOptions AddButton">Download Report</button>
+
+    </div>
+
+    <div class="HidePage"></div>
+    <div id="AddAsset" class="AddAsset HoverForm"></div>
+
+
+    <br />
+
+    <!--Div for Tables-->
+    <div class="mainTables">
+        <table class="mainTables">
+            <thead>
+                <tr id="assetsHeader">
+                   <th>Loading...</th> 
+                </tr>
+            </thead>
+            <tbody id="assets">
+                <tr id="assetsHeader">
+                    <td>Loading...</td>
+                    <td>If rows don't load, you may not have access to Helpdesk Inventory</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <br/><br/>
+    <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+    
+    <script src="Inventory.js"></script>
+
+</body>
+</html>

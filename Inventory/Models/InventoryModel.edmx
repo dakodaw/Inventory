@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DateInService" Type="date" Nullable="false" />
+          <Property Name="DateDisposed" Type="date" />
+          <Property Name="DisposedReason" Type="varchar" MaxLength="255" />
+          <Property Name="ModelId" Type="int" Nullable="false" />
+          <Property Name="Po" Type="varchar" MaxLength="50" />
+          <Property Name="Serial" Type="varchar" MaxLength="50" />
+          <Property Name="Cpu" Type="varchar" MaxLength="50" />
+          <Property Name="Ram" Type="varchar" MaxLength="50" />
+          <Property Name="MacAddress" Type="varchar" MaxLength="50" />
+          <Property Name="BiosVersion" Type="varchar" MaxLength="50" />
+          <Property Name="OsVersion" Type="varchar" MaxLength="50" />
+          <Property Name="Ink" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCompanyId" Type="varchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="50" />
+          <Property Name="AdditionalNotes" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AssetBrands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="AssetModelName" Type="varchar" MaxLength="50" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assignments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetId" Type="int" />
+          <Property Name="OwnerId" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CheckedOut" Type="bit" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="DateUpdated" Type="date" Nullable="false" />
+          <Property Name="UserUpdate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeviceName" Type="varchar" MaxLength="255" />
+          <Property Name="DateDeployed" Type="date" Nullable="false" />
+          <Property Name="DateReturned" Type="date" Nullable="false" />
+          <Property Name="Bitlocker" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="OwnerStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="InventoryModelStoreContainer">
+          <EntitySet Name="Asset" EntityType="Self.Asset" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="AssetBrands" EntityType="Self.AssetBrands" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="AssetModels" EntityType="Self.AssetModels" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="AssetType" EntityType="Self.AssetType" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="Inventory" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assets" EntityType="InventoryModel.Asset" />
+          <EntitySet Name="AssetBrands" EntityType="InventoryModel.AssetBrand" />
+          <EntitySet Name="AssetModels" EntityType="InventoryModel.AssetModel" />
+          <EntitySet Name="AssetTypes" EntityType="InventoryModel.AssetType" />
+          <EntitySet Name="Assignments" EntityType="InventoryModel.Assignment" />
+          <EntitySet Name="Departments" EntityType="InventoryModel.Department" />
+          <EntitySet Name="Locations" EntityType="InventoryModel.Location" />
+          <EntitySet Name="Owners" EntityType="InventoryModel.Owner" />
+        </EntityContainer>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DateInService" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateDisposed" Type="DateTime" Precision="0" />
+          <Property Name="DisposedReason" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <Property Name="Po" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cpu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BiosVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OsVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceCompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AssetBrand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AssetModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="AssetModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssetType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetId" Type="Int32" />
+          <Property Name="OwnerId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CheckedOut" Type="Boolean" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserUpdate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateDeployed" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateReturned" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Bitlocker" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="InventoryModel.Asset">
+              <MappingFragment StoreEntitySet="Asset">
+                <ScalarProperty Name="AdditionalNotes" ColumnName="AdditionalNotes" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="ServiceCompanyId" ColumnName="ServiceCompanyId" />
+                <ScalarProperty Name="Ink" ColumnName="Ink" />
+                <ScalarProperty Name="OsVersion" ColumnName="OsVersion" />
+                <ScalarProperty Name="BiosVersion" ColumnName="BiosVersion" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="Ram" ColumnName="Ram" />
+                <ScalarProperty Name="Cpu" ColumnName="Cpu" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Po" ColumnName="Po" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="DisposedReason" ColumnName="DisposedReason" />
+                <ScalarProperty Name="DateDisposed" ColumnName="DateDisposed" />
+                <ScalarProperty Name="DateInService" ColumnName="DateInService" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetBrands">
+            <EntityTypeMapping TypeName="InventoryModel.AssetBrand">
+              <MappingFragment StoreEntitySet="AssetBrands">
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetModels">
+            <EntityTypeMapping TypeName="InventoryModel.AssetModel">
+              <MappingFragment StoreEntitySet="AssetModels">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="AssetModelName" ColumnName="AssetModelName" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetTypes">
+            <EntityTypeMapping TypeName="InventoryModel.AssetType">
+              <MappingFragment StoreEntitySet="AssetType">
+                <ScalarProperty Name="TypeActive" ColumnName="TypeActive" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="InventoryModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignments">
+                <ScalarProperty Name="Bitlocker" ColumnName="Bitlocker" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="DateDeployed" ColumnName="DateDeployed" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="UserUpdate" ColumnName="UserUpdate" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CheckedOut" ColumnName="CheckedOut" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="AssetId" ColumnName="AssetId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="InventoryModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="InventoryModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="LocationActive" ColumnName="LocationActive" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="InventoryModel.Owner">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="OwnerStatus" ColumnName="OwnerStatus" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
